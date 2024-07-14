@@ -19,8 +19,10 @@ LOGIN_REDIRECT_URL = 'event_list'
 LOGOUT_REDIRECT_URL = 'home'
 
 # Add Twilio credentials (you'll need to sign up for a Twilio account)
-TWILIO_ACCOUNT_SID = 'AC48b5aa48c277f916a5d621be8cca271f'
-TWILIO_AUTH_TOKEN = 'ad5cdaf8caa92fdfc59bd86c5d2e3b82'
+#TWILIO_ACCOUNT_SID = 'AC48b5aa48c277f916a5d621be8cca271f'
+#TWILIO_AUTH_TOKEN = 'ad5cdaf8caa92fdfc59bd86c5d2e3b82'
+TWILIO_ACCOUNT_SID = ""
+TWILIO_AUTH_TOKEN = ""
 TWILIO_PHONE_NUMBER = '+14153160675'
 
 # Quick-start development settings - unsuitable for production
