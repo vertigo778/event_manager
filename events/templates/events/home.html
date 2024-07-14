@@ -1,0 +1,16 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to Event Manager</h1>
+        <p class="lead">Manage your events and attendees with ease.</p>
+        <hr class="my-4">
+        {% if user.is_authenticated %}
+            <p>You are logged in as {{ user.username }}.</p>
+            <a class="btn btn-primary btn-lg" href="{% url 'event_list' %}" role="button">View My Events</a>
+        {% else %}
+            <p>Please log in to manage your events.</p>
+            <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Log In</a>
+        {% endif %}
+    </div>
+{% endblock %}
