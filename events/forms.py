@@ -15,8 +15,8 @@ class EventForm(forms.ModelForm):
 class EntryForm(forms.ModelForm):
     phone_number = forms.CharField(
         max_length=10,
-        min_length=10,
-        widget=forms.TextInput(attrs={'placeholder': 'Enter 10-digit number'}),
+        min_length=0,
+        widget=forms.TextInput(attrs={'placeholder': 'Enter 10-digit number or leave blank'}),
     )
 
     class Meta:
