@@ -7,7 +7,7 @@ from twilio.rest import Client
 from django.template.defaulttags import register
 from django.contrib.auth import logout
 from django.shortcuts import render
-import sms
+
 
 
 
@@ -54,9 +54,22 @@ def delete_event(request, event_id):
 
 
 
+from textmagic.rest import TextmagicRestClient
+username = "spxsignals"
+token = "xWMQ2KW63O0UuA6JWLbdG32ZoffqBn"
+client = TextmagicRestClient(username, token)
+#message = client.messages.create(phones="+16612210015", text="Hello TextMagic")
+
+TURN_OFF = True
+
+def sendtext(content, number):
+
+    message = client.messages.create(phones=("+1" + number), text=content)
+
+
 # Add this function to send SMS
 def send_sms(phone_number, message):
-    sms.send_sms(phone_number, message)
+    sendtext(message, phone_number)
     
     #client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
     #try:
