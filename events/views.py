@@ -64,7 +64,8 @@ TURN_OFF = True
 
 def sendtext(content, number):
 
-    message = client.messages.create(phones=("+1" + number), text=content)
+    if len(number) == 10:
+        message = client.messages.create(phones=("+1" + number), text=content)
 
 
 # Add this function to send SMS
