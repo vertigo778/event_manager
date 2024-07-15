@@ -7,6 +7,7 @@ from twilio.rest import Client
 from django.template.defaulttags import register
 from django.contrib.auth import logout
 from django.shortcuts import render
+import sms
 
 
 
@@ -55,15 +56,17 @@ def delete_event(request, event_id):
 
 # Add this function to send SMS
 def send_sms(phone_number, message):
-    client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-    try:
-        client.messages.create(
-            body=message,
-            from_=settings.TWILIO_PHONE_NUMBER,
-            to=phone_number
-        )
-    except Exception as e:
-        print(f"Error sending SMS: {e}")
+    sms.send_sms(phone_number, message)
+    
+    #client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+    #try:
+    #    client.messages.create(
+    #        body=message,
+    #        from_=settings.TWILIO_PHONE_NUMBER,
+    #        to=phone_number
+    #    )
+    #except Exception as e:
+    #    print(f"Error sending SMS: {e}")
 
 @login_required
 def event_detail(request, event_id):
