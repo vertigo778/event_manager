@@ -108,9 +108,9 @@ def update_entry_status(request, entry_id, status):
     
     if old_status == 'WAITING':
         if status == 'ACCEPTED':
-            message = f"Congratulations! You've been accepted to {entry.event.title}."
+            message = f"Congratulations! You've been accepted to {entry.event.title}. Head to UCB LA for your ticket."
         elif status == 'REJECTED':
-            message = f"We're sorry, but you've been rejected from {entry.event.title}."
+            message = f"We're sorry, we don't have a ticket for you for {entry.event.title} ."
         
         send_sms(entry.phone_number, message)
     
@@ -123,7 +123,7 @@ def delete_entry(request, entry_id):
     if request.method == 'POST':
         # Send SMS notification
         message = f"Your entry for the event '{entry.event.title}' has been removed."
-        send_sms(entry.phone_number, message)
+        #send_sms(entry.phone_number, message)
         
         entry.delete()
         return redirect('event_detail', event_id=event_id)
