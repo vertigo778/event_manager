@@ -26,7 +26,7 @@ class Event(models.Model):
 class Entry(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=15)
+    phone_number = models.CharField(max_length=10)
     status = models.CharField(max_length=20, choices=[
         ('WAITING', 'Waiting'),
         ('ACCEPTED', 'Accepted'),

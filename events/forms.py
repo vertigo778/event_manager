@@ -16,7 +16,7 @@ class EntryForm(forms.ModelForm):
     phone_number = forms.CharField(
         max_length=10,
         min_length=0,
-        widget=forms.TextInput(attrs={'placeholder': 'Enter 10-digit number or leave blank'}),
+        widget=forms.TextInput(attrs={'placeholder': 'Enter 10-digit number'}),
     )
 
     class Meta:
@@ -25,6 +25,6 @@ class EntryForm(forms.ModelForm):
 
     def clean_phone_number(self):
         phone_number = self.cleaned_data.get('phone_number')
-        if not re.match(r'^\d{10}$', phone_number) and len(phone_number) > 0:
+        if not re.match(r'^\d{10}$', phone_number):
             raise forms.ValidationError('Phone number must be 10 digits.')
         return phone_number
