@@ -47,7 +47,7 @@ TWILIO_PHONE_NUMBER = os.environ.get('TWILIO_PHONE_NUMBER')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['143.110.225.142']
+ALLOWED_HOSTS = ['143.110.225.142', 'ucbstudentlist.com:8000', 'ucbstudentlist.com']
 
 
 # Application definition
