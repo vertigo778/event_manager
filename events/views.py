@@ -7,6 +7,11 @@ from twilio.rest import Client
 from django.template.defaulttags import register
 from django.contrib.auth import logout
 from django.shortcuts import render
+import os
+
+TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
+TWILIO_PHONE_NUMBER = os.environ.get('TWILIO_PHONE_NUMBER')
 
 
 
@@ -70,17 +75,16 @@ def sendtext(content, number):
 
 # Add this function to send SMS
 def send_sms(phone_number, message):
-    sendtext(message, phone_number)
     
-    #client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-    #try:
-    #    client.messages.create(
-    #        body=message,
-    #        from_=settings.TWILIO_PHONE_NUMBER,
-    #        to=phone_number
-    #    )
-    #except Exception as e:
-    #    print(f"Error sending SMS: {e}")
+    client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+    try:
+        client.messages.create(
+            body=message,
+            from_=TWILIO_PHONE_NUMBER,
+            to=phone_number
+        )
+    except Exception as e:
+        print(f"Error sending SMS: {e}")
 
 @login_required
 def event_detail(request, event_id):

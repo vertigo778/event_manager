@@ -1,6 +1,5 @@
-#TWILIO_ACCOUNT_SID = ''
-#TWILIO_AUTH_TOKEN = ''
-TWILIO_PHONE_NUMBER = '+14153160675'
+
+TWILIO_PHONE_NUMBER = '+18777639132'
 import textmagic_
 
 from twilio.rest import Client
@@ -18,9 +17,21 @@ def send_sms(phone_number, message):
     #except Exception as e:
     #    print(f"Error sending SMS: {e}")
 
+def send_sms2(phone_number, message):
+    client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+    try:
+        client.messages.create(
+            body=message,
+            from_=TWILIO_PHONE_NUMBER,
+            to=phone_number
+        )
+    except Exception as e:
+        print(f"Error sending SMS: {e}")
 
 def main(): 
-    send_sms(6612210015, "hello")
+    send_sms2(6612210015, "hello")
+
+
   
   
 # Using the special variable  
